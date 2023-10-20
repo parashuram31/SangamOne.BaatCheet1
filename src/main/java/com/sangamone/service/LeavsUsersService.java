@@ -50,6 +50,24 @@ public class LeavsUsersService implements LeavsUsersDao{
 		return leavsUsersRepo.findById(company_id);
 	}
 
+	@Override
+	public List<LeavsUsers> findByUserId(int user_id) {
+		
+		return leavsUsersRepo.findByUserId(user_id);
+	}
+
+	@Override
+	public List<LeavsUsers> viewUsersByRole(String user_role) {
+		
+		return leavsUsersRepo.viewUsersByRole(user_role);
+	}
+
+	@Override
+	public List<LeavsUsers> viewUsersByCompanyIdRole(int company_id, String user_role) {
+		
+		return leavsUsersRepo.viewUsersByCompanyIdRole(company_id, user_role);
+	}
+
 	
 
 }

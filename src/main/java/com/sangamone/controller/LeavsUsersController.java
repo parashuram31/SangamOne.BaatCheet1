@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sangamone.dao.LeavsUsersDao;
-import com.sangamone.model.LeavsCompanies;
 import com.sangamone.model.LeavsCompanyUser;
 import com.sangamone.model.LeavsUsers;
 
@@ -32,5 +31,18 @@ public class LeavsUsersController {
 	@GetMapping("viewUsersByCompanyId/{company_id}")
 	public List<LeavsUsers>  getUser(@PathVariable ("company_id") int company_id) {
 		return leavsUsersDao.findById(company_id);
+	}
+	@GetMapping("viewUsersByUserId/{user_id}")
+	public List<LeavsUsers> getUserByUserId(@PathVariable ("user_id") int user_id){
+	return leavsUsersDao.findByUserId(user_id);
+	}
+	@GetMapping("viewUsersByRole/{user_role}")
+	public List<LeavsUsers> viewUsersByRole(@PathVariable ("user_role") String user_role){
+		return leavsUsersDao.viewUsersByRole(user_role);
+	}
+	@GetMapping("viewUsersByCompanyIdRole/{company_id}/{user_role}")
+	public List<LeavsUsers> viewUsersByCompanyIdRole(@PathVariable ("company_id") int company_id, 
+			@PathVariable ("user_role") String user_role){
+		return leavsUsersDao.viewUsersByCompanyIdRole(company_id,user_role);
 	}
 }
